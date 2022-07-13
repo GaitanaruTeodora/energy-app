@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "react-toastify": "^9.0.5",
+    "styled-components": "^5.3.5",
+    "webfontloader": "^1.6.28"
+  }
+}
