@@ -1,5 +1,5 @@
 {
-  "name": "soft-ui-dashboard-react",
+  "name": "dashboard-react",
   "version": "3.1.0",
   "author": "Creative Tim",
   "license": "SEE LICENSE IN <https://www.creative-tim.com/license>",
@@ -50,6 +50,7 @@
     "react-dom": "17.0.2",
     "react-flatpickr": "3.10.7",
     "react-github-btn": "1.2.1",
+    "react-js-loader": "^0.1.0",
     "react-loader-spinner": "^5.1.5",
     "react-redux": "^8.0.1",
     "react-router-dom": "6.2.1",
@@ -62,6 +63,8 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "rsuite": "^5.16.0",
+    "semantic-ui-react": "^2.1.3",
     "styled-components": "^5.3.5",
     "stylis": "4.0.13",
     "stylis-plugin-rtl": "2.1.1",

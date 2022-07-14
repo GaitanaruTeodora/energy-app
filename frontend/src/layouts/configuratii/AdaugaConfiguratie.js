@@ -80,7 +80,7 @@ function AdaugaConfiguratie({setLoad ,setIsClicked}) {
             <Grid item xs={12} lg={12}>
               <Card className="overflow-visible">
                 <SuiBox p={2} lineHeight={1}>
-                  <SuiTypography variant="h6" fontWeight="medium">
+                  <SuiTypography variant="body1" fontWeight="bold">
                     Configuratie noua
                   </SuiTypography>
                   <Divider />

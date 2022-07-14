@@ -9,8 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import TabelDispozitive from "./tabel";
 import SuiTypography from "components/SuiTypography";
 import axios from "axios";
-import { Bars } from "react-loader-spinner";
-
+import { Oval } from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-js-loader";
 function Recomandari() {
   const dispatch = useDispatch();
 
@@ -93,7 +94,24 @@ function Recomandari() {
       <DashboardNavbar />
 
       {isLoading ? (
-        <Bars color="#00BFFF" height={300} width={200} />
+        // <Loader content="Loading..." vertical />
+        //
+
+        <Oval
+          position="fixed"
+          // left:0;
+          // z-index: 9999;
+          // display: flex;
+          // justify-content: center;
+          // align-items: center;
+          // flex-wrap: nowrap;
+          // flex-direction: row;
+          color="#00BFFF"
+          height={300}
+          width={200}
+          title={"Loading..."}
+          size={100}
+        />
       ) : (
         <SuiBox py={3}>
           <SuiBox mb={3}>
@@ -140,18 +158,22 @@ function Recomandari() {
                     </tbody>
                   </table>
                 </SuiBox>
-
               </Grid>
             </Grid>
             {categorie !== undefined && consumatoriProprii[selecteaza1] !== undefined ? (
-              <Grid container spacing={3} mt={3}>
+              <Grid container spacing={4} mt={1}>
                 {aleg.map((item, idx) => {
                   return (
-                    
-                    <Grid item xs={12} md={6} lg={4}>
-                      
-                      <Card className="container2" ml={3}>
-                        <SuiBox p={2} ml={3}>
+                    <Grid
+                      direction="column"
+                      alignItems="center"
+                      justify="center"
+                      item
+                      xs={12}
+                      lg={4}
+                    >
+                      <Card ml={1}>
+                        <SuiBox p={3} ml={3}>
                           <SuiBox
                             component="img"
                             src={item.img}
@@ -159,36 +181,35 @@ function Recomandari() {
                             borderRadius="lg"
                             boxShadow="lg"
                             width="300px"
-                            height="250px"
-                            my={3}
+                            height="270px"
                           />
-                          <SuiBox display="flex" >
-                            <SuiBox  mt={1}>
+                          <SuiBox display="flex">
+                            <SuiBox mt={1}>
                               <SuiTypography
                                 display="block"
                                 variant="caption"
                                 fontWeight="medium"
                                 textColor="secondary"
                               >
-                                <h3> {item.denumire} </h3>
+                                <SuiTypography variant="h5"> {item.denumire} </SuiTypography>
                               </SuiTypography>
                               <SuiTypography
                                 display="block"
-                                variant="caption"
+                                variant="button"
                                 fontWeight="medium"
                                 textColor="secondary"
                                 mt={2}
                               >
-                                <h3> Pret: {item.pret} </h3>
+                                <SuiTypography> Pret: {item.pret} RON </SuiTypography>
                               </SuiTypography>
 
                               <SuiTypography
                                 display="block"
                                 variant="caption"
                                 fontWeight="medium"
-                                textColor="secondary"
+                                textColor="dark"
                               >
-                                <h3> Consum: {item.consum} </h3>
+                                <SuiTypography> Consum: {item.consum} kWh </SuiTypography>
                               </SuiTypography>
                             </SuiBox>
                           </SuiBox>

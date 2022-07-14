@@ -32,7 +32,7 @@ function Index() {
   useEffect(() => {
     const from = last();
     const to = curent();
-    var cuvant = "energie";
+    var cuvant = "consum energetic";
     const url = `https://newsapi.org/v2/everything?q=${cuvant}?&from=${from}&to=${to}&sortBy=publishedAt&apiKey=c55d47c431f543bf8294c2bc9fb398dd`;
     // const url = 'https://newsapi.org/v2/everything?' +
     // `q=${cuvant}&` +

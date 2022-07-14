@@ -17,10 +17,8 @@ import Icon from "@mui/material/Icon";
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
-import SuiInput from "components/SuiInput";
-import BedgeAvatar from "components/SuiAvatar/BadgeAvatar"
 import IconProfileSign from "examples/Icons/IconProfileSign";
-import Office from "examples/Icons/Office";
+
 // Soft UI Dashboard React examples
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";

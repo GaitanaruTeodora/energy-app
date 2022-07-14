@@ -31,7 +31,7 @@ function ListaConfiguratii() {
   return (
     <Card>
       <SuiBox display="flex" justifyContent="space-between" alignItems="center" pt={2} px={2}>
-        <SuiTypography variant="h6" fontWeight="medium">
+        <SuiTypography variant="h6" fontWeight="bold">
           Configuratiile mele
         </SuiTypography>
       </SuiBox>

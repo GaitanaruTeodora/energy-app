@@ -15,6 +15,7 @@ import IconProfile from "examples/Icons/IconProfile";
 import Compara from "layouts/compara/compara";
 import Stiri from "layouts/stiri"
 import IconConfiguratii from "examples/Icons/IconConfiguratii";
+import IconStiri from "examples/Icons/IconStiri";
 
 const routes = [
   {
@@ -31,7 +32,7 @@ const routes = [
     name: "Stiri",
     key: "stiri",
     route: "/stiri",
-    icon: <Shop size="12px" />,
+    icon: <IconStiri size="8px" />,
     component: <Stiri />,
     noCollapse: true,
   },

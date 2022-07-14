@@ -74,7 +74,7 @@ function Cameras({idConfiguratie,camera,setCamera,load,setLoad}) {
     })
   }
 
-
+  
   useEffect(()=>{
 
     calculTotal()

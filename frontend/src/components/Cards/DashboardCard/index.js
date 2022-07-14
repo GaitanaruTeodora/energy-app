@@ -10,7 +10,7 @@ import Icon from "@mui/material/Icon";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 
-function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction }) {
+function DashboardCard({ bgColor, title, count, percentage, icon, direction }) {
   return (
     <Card>
       <SuiBox bgColor={bgColor} variant="gradient">
@@ -87,8 +87,7 @@ function MiniStatisticsCard({ bgColor, title, count, percentage, icon, direction
   );
 }
 
-// Setting default values for the props of MiniStatisticsCard
-MiniStatisticsCard.defaultProps = {
+DashboardCard.defaultProps = {
   bgColor: "white",
   title: {
     fontWeight: "medium",
@@ -101,8 +100,7 @@ MiniStatisticsCard.defaultProps = {
   direction: "right",
 };
 
-// Typechecking props for the MiniStatisticsCard
-MiniStatisticsCard.propTypes = {
+DashboardCard.propTypes = {
   bgColor: PropTypes.oneOf([
     "white",
     "primary",
@@ -138,4 +136,4 @@ MiniStatisticsCard.propTypes = {
   direction: PropTypes.oneOf(["right", "left"]),
 };
 
-export default MiniStatisticsCard;
+export default DashboardCard;

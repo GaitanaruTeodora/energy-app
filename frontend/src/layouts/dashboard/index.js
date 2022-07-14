@@ -9,7 +9,7 @@ import SuiTypography from "components/SuiTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
+
 
 // Soft UI Dashboard React base styles
 import typography from "assets/theme/base/typography";
@@ -26,6 +26,8 @@ import CanvasJSReact from '../../chart/canvasjs.react';
 import { listConfigurations } from "actions/configurationAction";
 import Modal from "./components/Modal";
 import { Icon } from "@mui/material";
+import DashboardCard from "components/Cards/DashboardCard";
+
 //var CanvasJSReact = require('./canvasjs.react');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -187,7 +189,7 @@ function Dashboard() {
         <SuiBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
+              <DashboardCard
                 title={{ text: "Consumul total pe zi" }}
                 count={totalConsum.toFixed(2)}
                 percentage={{ color: "dark", text: "kwh" }}
@@ -195,7 +197,7 @@ function Dashboard() {
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
+              <DashboardCard
                 title={{ text: "Consum pe luna" }}
                 count={(totalConsum*30).toFixed(2)}
                 percentage={{ color: "dark", text: "kwh" }}
@@ -203,7 +205,7 @@ function Dashboard() {
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
+              <DashboardCard
                 title={{ text: "Consum pe an" }}
                 count={(totalConsum*365).toFixed(2)}
                 percentage={{ color: "dark", text: "kwh" }}
@@ -211,7 +213,7 @@ function Dashboard() {
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
-              <MiniStatisticsCard
+              <DashboardCard
                 title={{ text: "Cheltuieli cu energia" }}
                 count={(total*30).toFixed(2)}
                 percentage={{ color: "dark", text: "RON" }}

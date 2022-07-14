@@ -5,15 +5,14 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import ReactTable from "react-table";
 import { useDispatch, useSelector } from "react-redux";
 import TabelDispozitive from "./tabel";
-import { identifier } from "stylis";
 import SuiTypography from "components/SuiTypography";
 import axios from "axios";
 import { Bars } from "react-loader-spinner";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
-import CardConsumCompara from "examples/Cards/CardConsumCompara";
+import CardConsumCompara from "components/Cards/CardConsumCompara";
+import Loader from "components/Loader";
+
 function Compara() {
   const dispatch = useDispatch();
 
@@ -162,11 +161,16 @@ function Compara() {
         </Grid>
         
       ) : (
-        <SuiTypography>nu</SuiTypography>
+        <Grid item container direction="row">
+          <Icon fontSize="medium" color="inherit">
+          arrow_forward
+          </Icon>
+        <SuiTypography variant="h5" fontWeight="bold"  color="dark"> Introduceti dispozitive in configuratie pentru a putea face comparatia!</SuiTypography>
+        </Grid>
       )}
 
       {isLoading ? (
-        <Bars color="#00BFFF" height={300} width={200} />
+        <Loader  />
       ) : (
         <SuiBox py={3}>
           <SuiBox mb={3}>

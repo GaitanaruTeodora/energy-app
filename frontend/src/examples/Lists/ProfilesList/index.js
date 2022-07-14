@@ -36,7 +36,7 @@ function ProfilesList({ title, profiles }) {
           <SuiButton
             component="a"
             href={action.route}
-            target="_blank"
+    
             rel="noreferrer"
             variant="text"
             color={action.color}
