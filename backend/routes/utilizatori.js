@@ -1,8 +1,131 @@
 const express = require("express");
 const Utilizator = require("../models/utilizator");
+const Email = require("../models/email");
 const router = express.Router();
-
+const nodemailer = require("nodemailer");
 // Endpoint  utilizator.1: GET - toti utilizatorii
+
+router.put("/cerere", async (req, res) => {
+  if (!req.body.cod) {
+    return res.send("Nu exista cod!");
+  }
+  if (!req.body.email) {
+    return res.send("Nu exista email!");
+  }
+ 
+  req.body.isValid = false
+ 
+ 
+  try {
+    const email = await Email.create(req.body);
+    return res.status(200).json(email);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+router.get("/getVerifica", async (req, res, next) => {
+  try {
+    const utilizatori = await Email.findAll();
+    if (utilizatori.length > 0) {
+      res.status(200).json(utilizatori);
+    } else {
+      res.status(404).send("Nu exista utilizatori!");
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/verifica", async (req, res, next) => {
+  if (!req.body.cod) {
+    return res.status(200).json({ mes: "Nu exista cod introdus" });
+  }
+
+ 
+ 
+  try {
+     Email.findOne({
+      where: {cod:req.body.cod},
+    }).then((email)=>{
+      if (email.isValid == false){
+        return  res.status(200).json({ mes: "Link ul nu mai este valid" });
+      }
+       Utilizator.findOne({
+        where: {email:email.email},
+      }).then((utilizator)=>{
+        if (utilizator)
+        {
+            utilizator.parola = req.body.parola
+            utilizator.save().then((x)=>{
+              email.isValid = false;
+              email.save().then((r)=>{
+                return res.status(200).json({ mes: "Parola a fost schimbata cu succes" });
+              })
+            })
+        }
+        else{
+         return res.status(200).json({ mes: "Nu exista utilizatorul cu aceasta adresa de email" });
+        }
+
+      });
+
+    });
+   
+  
+   
+ 
+    
+   
+    
+   
+  } catch (err) {
+    return res.status(200).json({ mes: err.message });
+  }
+ 
+
+
+
+})
+router.post("/mail", async (req, res, next) => {
+  if (!req.body.cod) {
+    return res.send("Nu exista cod!");
+  }
+  if (!req.body.email) {
+    return res.send("Nu exista email!");
+  }
+
+ 
+ 
+  try {
+    const email = await Email.create(req.body);
+   
+  } catch (err) {
+    return res.send("Eroare creere");
+  }
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'teo.gaitanaru@gmail.com',
+      pass: 'sbtvcdjfrckfsqsz'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'teo.gaitanaru@gmail.com',
+    to: req.body.email,
+    subject: 'Resetare parola',
+    text: req.body.mesaj
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      res.status(200).json({ mes: "Email invalid" });
+    } else {
+      res.status(200).json({ mes: "Mail-ul a fost trimis" });
+    }
+  });
+
+})
 router.get("/utilizatori", async (req, res, next) => {
   try {
     const utilizatori = await Utilizator.findAll();

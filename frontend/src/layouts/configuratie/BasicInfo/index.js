@@ -174,8 +174,6 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
       if (unitate == "kWh/an") {
         valUnitate = 1 / 365;
       }
-      console.log(consum);
-      console.log(unitate);
 
       cat.forEach((el) => {
         el.value == categorie
@@ -206,9 +204,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
   };
 
   const adaugaConsumatorAutomat = (e, frecventaValidareAutomat) => {
-    console.log(denumireAutomat);
     const obj = selectDenumireAutomat[denumireAutomat];
-    console.log(obj);
     dispatch(
       addConsumator(
         idConfiguratie,
@@ -217,7 +213,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
         obj.categorie,
         "",
         obj.imagine,
-        obj.consum,
+        Math.round(obj.consum * 100)/100,
         obj.pret,
         frecventaValidareAutomat,
         obj.unitateMasura,
@@ -251,7 +247,6 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
 
   const validareFormular = Yup.object().shape({
     denumireValidare: Yup.string()
-      .min(3, "Denumirea necesita cel putin 2 caractere")
       .required("Acest camp necesita completare"),
     consumValidare: Yup.number()
       .moreThan(0, "Introduceti o valoare mai mare decat 0")
@@ -319,7 +314,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <SuiBox mb={2} ml={0.5} lineHeight={0} display="block">
+                    
                       <SuiTypography
                         component="label"
                         variant="caption"
@@ -328,14 +323,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                       >
                         Categorie
                       </SuiTypography>
-                    </SuiBox>
+                    
                     <select
                       style={{
                         width: "210px",
                         height: "40px",
                         padding: "5px",
-                        borderRadius: "0.5em",
-                        opacity: "0.5",
+                        borderRadius: "0.3em",
+                        opacity: "0.7",
                       }}
                       value={categorie}
                       onChange={(e) => setCategorie(e.target.value)}
@@ -360,7 +355,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   {categorie == "Televizoare" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={2} ml={0.5} lineHeight={0} display="block">
+                        
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -369,14 +364,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+                     
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
 
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           defaultValue={selectData.umTelevizoare[0].value}
                           value={unitate}
@@ -406,7 +401,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   {categorie == "Aragazuri" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={2} ml={0.5} lineHeight={0} display="block">
+                       
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -415,14 +410,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -450,7 +445,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   {categorie == "Aparate frigorifice" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={1} ml={0.5} lineHeight={0} display="block">
+                       
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -459,14 +454,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+      
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -496,7 +491,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   {categorie == "Plite" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={1} ml={0.5} lineHeight={0} display="block">
+                       
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -505,14 +500,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -541,7 +536,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   {categorie == "Cuptoare" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={1} ml={0.5} lineHeight={0} display="block">
+                      
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -550,14 +545,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+             
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -578,23 +573,25 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                         />
                       </Grid>
                       <Grid item xs={12} sm={3}>
-                        <SuiBox mb={2} ml={0.5} lineHeight={0} display="inline-block">
+                       
                           <SuiTypography
+                          mt={1.1}
+                          mb={1}
                             component="label"
                             variant="caption"
                             fontWeight="bold"
                             textTransform="capitalize"
                           >
-                            Alegeti interval
+                            Alegeti intervalul
                           </SuiTypography>
-                        </SuiBox>
+                  
                         <select
                           style={{
                             width: "150px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -615,7 +612,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   {categorie == "Hote" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={1} ml={0.5} lineHeight={0} display="block">
+                       
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -624,14 +621,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -661,7 +658,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                   categorie == "Masini de spalat vase" ? (
                     <>
                       <Grid item xs={12} sm={6}>
-                        <SuiBox mb={1} ml={0.5} lineHeight={0} display="block">
+                       
                           <SuiTypography
                             component="label"
                             variant="caption"
@@ -670,14 +667,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Unitate de masura
                           </SuiTypography>
-                        </SuiBox>
+                       
                         <select
                           style={{
                             width: "210px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={unitate}
                           onChange={(e) => setUnitate(e.target.value)}
@@ -692,13 +689,15 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                       <Grid item xs={12} sm={3}>
                         <TextField
                           type="number"
+                          placeholder="Cicluri"
                           name="frecventaValidare"
                           label="Frecventa de utilizare - nr utilizari"
                         />
                       </Grid>
                       <Grid item xs={12} sm={3}>
-                        <SuiBox mb={2} ml={0.5} lineHeight={0} display="inline-block">
+                        
                           <SuiTypography
+                              mb={1.2}
                             component="label"
                             variant="caption"
                             fontWeight="bold"
@@ -706,14 +705,14 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                           >
                             Alegeti intervalul
                           </SuiTypography>
-                        </SuiBox>
+                  
                         <select
                           style={{
                             width: "150px",
                             height: "40px",
                             padding: "5px",
-                            borderRadius: "0.5em",
-                            opacity: "0.5",
+                            borderRadius: "0.3em",
+                            opacity: "0.7",
                           }}
                           value={interval}
                           onChange={(e) => setInterval(e.target.value)}
@@ -847,15 +846,26 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                     {categorieAutomat == "Masini de spalat vase" ||
                     categorieAutomat == "Masini de spalat rufe" ||
                     categorieAutomat == "Uscatoare rufe" ? (
-                      <>
+                      <Grid container spacing={1}>
+                      
                         <Grid item xs={12} sm={6}>
                           <TextField
                             type="number"
+                            placeholder="Cicluri"
                             name="frecventaValidareAutomat"
                             label="Frecventa de utilizare - nr utilizari"
                           />
                         </Grid>
-                        <Grid item xs={12} sm={6} display="block">
+                        <Grid item xs={12} sm={6}>
+                        <SuiTypography
+                              mb={1.2}
+                            component="label"
+                            variant="caption"
+                            fontWeight="bold"
+                            textTransform="capitalize"
+                          >
+                            Alegeti intervalul
+                          </SuiTypography>
                           <select
                             style={{
                               width: "165px",
@@ -874,7 +884,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
                             })}
                           </select>
                         </Grid>
-                      </>
+                      </Grid>
                     ) : (
                       <TextField
                         type="number"

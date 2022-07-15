@@ -14,7 +14,8 @@ const Configuratie = sequelize.define(
         },
         pretEnergie: {
             type: DataTypes.FLOAT,
-        },               
+        }, 
+                        
     }
 );
 module.exports = Configuratie;

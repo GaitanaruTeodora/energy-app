@@ -91,7 +91,7 @@ function AdaugaConfiguratie({setLoad ,setIsClicked}) {
                     <TextField label="Furnizor energie" name='furnizor' type="text" />
                     <TextField label='Pret energie' name='pret' type="number"  />
                     <SuiBox display="flex" justifyContent="flex-end" mt={2}>
-                        <SuiButton variant="gradient" disabled={!(formik.isValid && formik.dirty)}  onClick={(e)=>{handleSubmit(e,formik.values.denumire,formik.values.furnizor,formik.values.pret)}}>
+                        <SuiButton variant="gradient" color="info" disabled={!(formik.isValid && formik.dirty)}  onClick={(e)=>{handleSubmit(e,formik.values.denumire,formik.values.furnizor,formik.values.pret)}}>
                           Adauga
                         </SuiButton>
                     </SuiBox>

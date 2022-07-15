@@ -42,9 +42,7 @@ function TabelDispozitive({
   const [consumModifica, setConsumModifica] = useState(consum);
   const [pretModifica, setPretModifica] = useState(pret);
   const [frecventaModifica, setFrecventaModifica] = useState(frecventa);
-  const getPageConf = (id) => {
-    console.log(id);
-  };
+
   String.prototype.float = function() { 
     return parseFloat(this.replace(',', '.')); 
   }
@@ -67,7 +65,7 @@ function TabelDispozitive({
  
    
     if (titluModifica == "") {
-      toast.error("Titlul nu poate fi gol!", {
+      toast.error("Denumirea produsului necesita completare!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -77,7 +75,7 @@ function TabelDispozitive({
         progress: undefined,
       });
     }
-    else if(consumModifica.float() <0)
+    else if(consumModifica <0)
     {
       toast.error("Consumul nu poate fi negativ!", {
         position: "top-right",
@@ -89,7 +87,7 @@ function TabelDispozitive({
         progress: undefined,
       });
     }
-    else if(pretModifica.float() <0)
+    else if(pretModifica <0)
     {
       toast.error("Pretul nu poate fi negativ!", {
         position: "top-right",
@@ -101,7 +99,7 @@ function TabelDispozitive({
         progress: undefined,
       });
     }
-    else if(frecventaModifica.float() <0)
+    else if(frecventaModifica <0)
     {
       toast.error("Frecventa nu poate fi negativ!", {
         position: "top-right",
@@ -285,7 +283,7 @@ function TabelDispozitive({
                 Consum
               </SuiTypography>
               <SuiTypography variant="caption" fontWeight="medium" textColor="text">
-                {consum} kWh
+                {Math.round(consum*100)/100} kWh
               </SuiTypography>
             </SuiBox>
           )}
@@ -365,7 +363,7 @@ function TabelDispozitive({
             <SuiButton sty buttonColor={"success"}>
               TOTAL
               <br></br>
-              {frecventa * consum} kWh
+              {Math.round((frecventa * consum)*100)/100} kWh
             </SuiButton>
           </SuiBox>
           <SuiBox mr={3}>

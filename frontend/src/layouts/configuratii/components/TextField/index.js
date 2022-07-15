@@ -5,7 +5,6 @@ import SuiTypography from "components/SuiTypography";
 function TextField({ label, ...props }) {
 
   const [field, meta] = useField(props)
-  console.log(field,meta)
   return (
     <div >
       <label htmlFor={field.name}>

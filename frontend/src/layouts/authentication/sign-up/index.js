@@ -56,7 +56,6 @@ function SignUp() {
   
   const submitRegister = (e, nume, prenume, email, password) => {
     e.preventDefault();
-    console.log(email)
     axios.get(`http://localhost:3000/api/verificaEmail/${email}`).then(
       (r)=>
       {
@@ -80,8 +79,6 @@ function SignUp() {
 
   useEffect(() => {
     if (userInfo) {
-      console.log("exist");
-
       navigate("/dashboard");
     }
     if (errorRegister) {

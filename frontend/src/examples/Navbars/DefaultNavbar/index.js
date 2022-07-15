@@ -1,21 +1,14 @@
 import { useState, useEffect } from "react";
 
-// react-router components
 import { Link } from "react-router-dom";
-
-// prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
 
-// @mui material components
 import Container from "@mui/material/Container";
-import Icon from "@mui/material/Icon";
 
-// Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import SuiButton from "components/SuiButton";
 
-// Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
 function DefaultNavbar({ transparent, light, action }) {
@@ -35,16 +28,10 @@ function DefaultNavbar({ transparent, light, action }) {
       }
     }
 
-    /** 
-     The event listener that's calling the displayMobileNavbar function when 
-     resizing the window.
-    */
     window.addEventListener("resize", displayMobileNavbar);
 
-    // Call the displayMobileNavbar function to set the state with the initial value.
     displayMobileNavbar();
 
-    // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
 
@@ -96,7 +83,6 @@ function DefaultNavbar({ transparent, light, action }) {
               <SuiButton
                 component="a"
                 href={action.route}
-                target="_blank"
                 rel="noreferrer"
                 variant="gradient"
                 color={action.color ? action.color : "info"}

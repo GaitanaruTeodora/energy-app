@@ -16,6 +16,8 @@ import Compara from "layouts/compara/compara";
 import Stiri from "layouts/stiri"
 import IconConfiguratii from "examples/Icons/IconConfiguratii";
 import IconStiri from "examples/Icons/IconStiri";
+import ResetareParola from "layouts/authentication/reset-password/reset";
+
 
 const routes = [
   {
@@ -32,7 +34,7 @@ const routes = [
     name: "Stiri",
     key: "stiri",
     route: "/stiri",
-    icon: <IconStiri size="8px" />,
+    icon: <IconStiri size="5px" />,
     component: <Stiri />,
     noCollapse: true,
   },
@@ -72,6 +74,15 @@ const routes = [
     route: "/configuratie/:id",
     icon: <Office size="12px" />,
     component: <Configuratie />,
+    noCollapse: true,
+  },
+  {
+    type: "collapsea",
+    name: "Resetare",
+    key: "Resetare",
+    route: "/resetareParola/:cod",
+    icon: <Office size="12px" />,
+    component: <ResetareParola />,
     noCollapse: true,
   },
 

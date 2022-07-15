@@ -11,7 +11,6 @@ import SuiInput from "components/SuiInput";
 
 function FormField({ label, name, ...rest }) {
   const [field, meta] = useField(rest)
-  console.log(field,meta)
   return (
     <SuiBox mb={1.5}>
       <SuiBox mb={1} ml={0.5} lineHeight={0} display="inline-block">

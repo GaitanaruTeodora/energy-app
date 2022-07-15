@@ -51,8 +51,9 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     };
   
     useEffect(()=>{
-      if (!userInfo)
+      if (!userInfo && pathname.split("/").slice(0)[1]!=='resetareParola')
       {
+        console.log(pathname.split("/").slice(0)[1]=='resetareParola')
         navigate('/authentication/sign-in');
       }
       else{

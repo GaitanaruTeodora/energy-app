@@ -47,7 +47,6 @@ function Recomandari() {
       .then(({ data }) => {
         let js = JSON.parse(data["out"][0].replaceAll(`'`, `"`));
         var arr = [];
-        console.log(js);
         arr.push(js["rez"]["poz1"]);
         arr.push(js["rez"]["poz2"]);
         arr.push(js["rez"]["poz3"]);
