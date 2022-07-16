@@ -128,7 +128,8 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
     if (
       categorie == "Uscatoare rufe" ||
       categorie == "Masini de spalat rufe" ||
-      categorie == "Masini de spalat vase"
+      categorie == "Masini de spalat vase" ||
+      categorie == "Cuptoare"
     ) {
       var valInterval = 1;
       var valUnitate = 1;
@@ -141,6 +142,7 @@ function BasicInfo({ camera, idConfiguratie, load, setLoad, adauga }) {
       if (unitate == "kWh/100 cicluri") {
         valUnitate = 1 / 100;
       }
+      
       if (unitate == "kWh/an") {
         valUnitate = 1 / 365;
       }

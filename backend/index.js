@@ -18,7 +18,7 @@ const Consumator = require("./models/consumator")
 // Define the model relationship.
 
 Utilizator.hasMany(Configuratie);
-// Configuratie.belongsTo(Utilizator,{foreignKey: 'utilizatorId'})
+Configuratie.belongsTo(Utilizator)
 Configuratie.hasMany(Consumator);
 
 

@@ -80,20 +80,20 @@ function Index() {
         mt={5}
        
       >
-        <SuiBox mb={1} style={{textAlign: "center"}} lineHeight={0} >
-          <h1>
+        <SuiBox style={{textAlign: "center"}} lineHeight={0} >
+          <SuiTypography variant="h2" >
             Stiri despre domeniul energetic
-          </h1>
+          </SuiTypography>
         </SuiBox >
-        <SuiBox mt={2.5} style={{textAlign: "center"}}> 
-          <h4>
+        <SuiBox style={{textAlign: "center"}}> 
+          <SuiTypography fontWeight="bold" color="dark">
             Data: {last()} - {curent()}
-          </h4>
+          </SuiTypography>
         </SuiBox>
       </SuiBox>
 
 
-      <Grid container spacing={3} mt={0}>
+      <Grid container spacing={3} mt={-1}>
         {articles.length > 0 ? (
           articles.map((article, idx) => {
             return (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Container from "@mui/material/Container";
@@ -34,6 +34,7 @@ function DefaultNavbar({ transparent, light, action }) {
 
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
+  const navigate = useNavigate()
 
   return (
     <Container>
@@ -68,8 +69,7 @@ function DefaultNavbar({ transparent, light, action }) {
           (action.type === "internal" ? (
             <SuiBox display={{ xs: "none", lg: "inline-block" }}>
               <SuiButton
-                component={Link}
-                to={action.route}
+                onClick={()=>{  navigate('/authentication/sign-up');}}
                 variant="gradient"
                 color={action.color ? action.color : "info"}
                 size="small"
@@ -82,7 +82,7 @@ function DefaultNavbar({ transparent, light, action }) {
             <SuiBox display={{ xs: "none", lg: "inline-block" }}>
               <SuiButton
                 component="a"
-                href={action.route}
+                onClick={()=>{  navigate('/authentication/sign-up');}}
                 rel="noreferrer"
                 variant="gradient"
                 color={action.color ? action.color : "info"}

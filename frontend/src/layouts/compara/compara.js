@@ -52,6 +52,7 @@ function Compara() {
 
   const { error, loading, userInfo } = userLogin;
   useEffect(() => {
+    try{
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -101,7 +102,9 @@ function Compara() {
             } catch (e) {}
           });
       });
-
+    }catch(e){
+      console.log(e)
+    }
     // get_recomandari.then((x)=>console.log(x))
 
     //"Televizor Smart QLED, Samsung 43Q60A, 108 cm, Ultra HD 4K, Clasa G"
@@ -129,23 +132,7 @@ function Compara() {
         });
     } catch (e) {}
   }, [selecteaza1, selecteaza2]);
-  const list = [
-    "Ion",
-    "vasile",
-    "au",
-    "Ion",
-    "vasile",
-    "au",
-    "Ion",
-    "vasile",
-    "au",
-    "Ion",
-    "vasile",
-    "au",
-    "Ion",
-    "vasile",
-    "au",
-  ];
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -170,7 +157,7 @@ function Compara() {
       )}
 
       {isLoading ? (
-        <Loader  />
+      <></>
       ) : (
         <SuiBox py={3}>
           <SuiBox mb={3}>
@@ -185,8 +172,8 @@ function Compara() {
                   className="container"
                 >
                   <table className="main-edit-table" align="right">
-                    <thead>
-                      <th>Dispozitivele tale</th>
+                    <thead style={{textAlign:"center"}} className="align-text">
+                      <SuiTypography fontWeight="bold">Dispozitivele tale</SuiTypography>
                     </thead>
                     <tbody>
                       {consumatoriProprii !== undefined ? (
@@ -230,7 +217,7 @@ function Compara() {
                   className="container"
                 >
                   <table className="main-edit-table" align="right">
-                    <thead>
+                    <thead style={{textAlign:"center"}}>
                       <th>Dispozitivele predefinite</th>
                     </thead>
                     <tbody>
@@ -272,37 +259,26 @@ function Compara() {
             {categorie !== undefined &&
             consumatoriProprii[selecteaza1] !== undefined &&
             predefiniti[selecteaza2] !== undefined ? (
-              <Grid container spacing={3} mt={3}>
-                <Grid item xs={12} md={6} lg={6}>
-                  <Card className="container2">
-                    <SuiBox p={3} ml={20}>
-                      <SuiBox
+             <Grid container spacing={3} mt={3}>
+              {/* Grid pentru consumator manual */}
+              <Grid item xs={12} lg={6}>
+                <Card>
+                  <SuiBox p ={2} style={{textAlign:"center"}}>
+                  <SuiBox
+                       
                         component="img"
                         src={consumatoriProprii[selecteaza1].imagine}
                         alt="Product Image"
                         borderRadius="lg"
                         boxShadow="lg"
-                        width="200px"
-                        height="150px"
-                        my={3}
+                        width="300px"
+                        height="250px"
+                      
                       />
-                      <SuiBox display="flex">
-                        <SuiBox mr={1}></SuiBox>
-                      </SuiBox>
-                    </SuiBox>
-
-                    <SuiBox pl={10} pr={10} pb={2}>
-                      <SuiTypography
-                        display="block"
-                        variant="caption"
-                        fontWeight="medium"
-                        textColor="secondary"
-                      >
-                        <h2> Denumire : {consumatoriProprii[selecteaza1].denumire} </h2>
-                      </SuiTypography>
-
-                      <br />
-                      <SuiTypography
+                  
+                  <SuiBox p = {2} style={{textAlign:"center"}}>
+                        <h5 style={{ display:"block", fontWeight:"bold"}}> Denumire : {consumatoriProprii[selecteaza1].denumire} </h5>
+                        <SuiTypography
                         display="block"
                         variant="caption"
                         fontWeight="medium"
@@ -313,10 +289,9 @@ function Compara() {
                             : { color: "red" }
                         }
                       >
-                        <h2> Pret : {consumatoriProprii[selecteaza1].pret} RON</h2>
+                        <h4 > Pret : {consumatoriProprii[selecteaza1].pret} RON</h4>
                       </SuiTypography>
 
-                      <br />
                       <SuiTypography
                         display="block"
                         variant="caption"
@@ -328,55 +303,33 @@ function Compara() {
                             : { color: "red" }
                         }
                       >
-                        <h2> Consum : {consumatoriProprii[selecteaza1].consum} kwh</h2>
-                      </SuiTypography>
+                        <h4> Consum : {consumatoriProprii[selecteaza1].consum} kwh</h4>
+                      </SuiTypography>               
 
-                      <SuiTypography
-                        mt={3}
-                        display="block"
-                        variant="caption"
-                        fontWeight="medium"
-                        textColor="red"
-                        style={
-                          consumatoriProprii[selecteaza1].consum < predefiniti[selecteaza2].consum
-                            ? { color: "green" }
-                            : { color: "red" }
-                        }
-                      ></SuiTypography>
-                    </SuiBox>
-                  </Card>
-                </Grid>
+                  </SuiBox>
+                  </SuiBox>
 
-                <Grid item xs={12} md={6} lg={6}>
-                  <Card className="container2">
-                    <SuiBox p={3} ml={20}>
-                      <SuiBox
-                        component="img"
+                </Card>
+
+              </Grid>
+              {/* Grid pentru consumator automat */}
+              <Grid item xs={12} lg={6}>
+                <Card>
+                <SuiBox p={2} style={{textAlign:"center"}}>
+                <SuiBox
+                       component="img"
                         src={predefiniti[selecteaza2].imagine}
                         alt="Product Image"
                         borderRadius="lg"
                         boxShadow="lg"
-                        width="200px"
-                        height="150px"
-                        my={3}
-                      />
-                      <SuiBox display="flex">
-                        <SuiBox mr={1}></SuiBox>
-                      </SuiBox>
-                    </SuiBox>
-
-                    <SuiBox pl={10} pr={10} pb={2}>
-                      <SuiTypography
-                        display="block"
-                        variant="caption"
-                        fontWeight="medium"
-                        textColor="secondary"
-                      >
-                        <h2> Denumire : {predefiniti[selecteaza2].denumire} </h2>
-                      </SuiTypography>
-
-                      <br />
-                      <SuiTypography
+                       width="300px"
+                       height="250px"
+                     
+                     />
+                
+                <SuiBox p = {2} style={{textAlign:"center"}}>
+                <h5 style={{ display:"block", fontWeight:"bold"}}> Denumire : {predefiniti[selecteaza2].denumire} </h5>
+                <SuiTypography
                         display="block"
                         variant="caption"
                         fontWeight="medium"
@@ -387,10 +340,8 @@ function Compara() {
                             : { color: "red" }
                         }
                       >
-                        <h2>Pret : {predefiniti[selecteaza2].pret} RON</h2>
+                        <h4>Pret : {predefiniti[selecteaza2].pret} RON</h4>
                       </SuiTypography>
-
-                      <br />
                       <SuiTypography
                         display="block"
                         variant="caption"
@@ -402,12 +353,17 @@ function Compara() {
                             : { color: "red" }
                         }
                       >
-                        <h2>Consum : {predefiniti[selecteaza2].consum} kwh</h2>
+                        <h4>Consum : {predefiniti[selecteaza2].consum} kwh</h4>
                       </SuiTypography>
-                    </SuiBox>
-                  </Card>
-                </Grid>
+
+                </SuiBox>
+                </SuiBox>
+
+                </Card>
+
               </Grid>
+
+             </Grid>
             ) : (
               <div></div>
             )}
@@ -415,7 +371,7 @@ function Compara() {
 
           {/* initial */}
           <SuiBox mb={3}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={6} xl={3}>
                 <CardConsumCompara
                   title={{ text: "Consumul initial pe zi" }}
@@ -453,11 +409,12 @@ function Compara() {
           {/* //  secundar */}
 
           <SuiBox mb={3}>
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={3}>
                 <CardConsumCompara
                   title={{ text: "Consumul actualizat pe zi" }}
-                  count={totalDupa.toFixed(3)}
+                  count={totalDupa.toFixed(3)} 
+                   
                   percentage={{ color: "dark", text: "kwh" }}
                   icon={{ color: "info", component: "paid" }}
                 />
@@ -466,7 +423,7 @@ function Compara() {
                 <CardConsumCompara
          
                   title={{ text: "Consum actualizat pe saptamana" }}
-                  count={(Math.round(totalDupa * 7 * 100) / 100).toFixed(2)}
+                  count={(totalDupa * 7).toFixed(2)}
                   percentage={{ color: "dark", text: "kwh" }}
                   icon={{ color: "info", component: "public" }}
                 />
@@ -474,7 +431,7 @@ function Compara() {
               <Grid item xs={12} sm={3}>
                 <CardConsumCompara
                   title={{ text: "Consum actualizat pe luna" }}
-                  count={(Math.round(totalDupa * 30 * 100) / 100).toFixed(2)}
+                  count={(totalDupa * 30).toFixed(2)}
                   percentage={{ color: "dark", text: "kwh" }}
                   icon={{ color: "info", component: "public" }}
                 />
@@ -482,7 +439,7 @@ function Compara() {
               <Grid item xs={12} sm={3}>
                 <CardConsumCompara
                   title={{ text: "Consum actualizat pe an" }}
-                  count={(Math.round(totalDupa * 365 * 100) / 100).toFixed(2)}
+                  count={(totalDupa * 365).toFixed(2)}
                   percentage={{ color: "dark", text: "kwh" }}
                   icon={{ color: "info", component: "public" }}
                 />

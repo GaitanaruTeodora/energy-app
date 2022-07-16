@@ -104,7 +104,22 @@ function TabelDispozitive({ color,culoare,func, numar,imagine, title,pret,consum
              Pret
             </SuiTypography>
             <SuiTypography variant="caption" fontWeight="bold" textColor="text">
-              {pret}
+              {pret} RON
+            </SuiTypography>
+
+            
+          </SuiBox>
+          <SuiBox mx={{ xs: 0, sm: "auto" }} lineHeight={1}   pr={2}>
+            <SuiTypography
+              display="block"
+              variant="caption"
+              fontWeight="medium"
+              textColor="secondary"
+            >
+             Consum
+            </SuiTypography>
+            <SuiTypography variant="caption" fontWeight="bold" textColor="text">
+              {consum} kwh
             </SuiTypography>
 
             

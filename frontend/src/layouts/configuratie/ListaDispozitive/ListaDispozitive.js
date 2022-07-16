@@ -43,8 +43,14 @@ function ListaDispozitive({ idConfiguratie, camera, setCamera }) {
   }, [consumators]);
 
   useEffect(() => {
-  
+    try{
+        
     dispatch(listConsumatori(userInfo.id, idConfiguratie));
+    }
+    catch(e){
+      console.log(e)
+    }
+
   }, []);
 
   return (

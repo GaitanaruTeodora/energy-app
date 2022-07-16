@@ -173,6 +173,7 @@ router.delete(
 );
 
 
+
 router.put(
   "/modifica/:utilizatorId/configuratie/:configuratieId/id/:consumatorId",
   async (req, res, next) => {
@@ -205,7 +206,7 @@ router.put(
                   consm.pret = req.body.pret
                   consm.frecventaUtilizare = req.body.frecventaUtilizare
                  consm.save().then((r)=>{
-                  res.status(202).json({ message: "Consumator modificat!" });
+                 return res.status(202).json({ message: "Consumator modificat!" });
                  });
                 
                 } else {
@@ -216,7 +217,7 @@ router.put(
                });
    
             } else {
-              res.status(404).json({
+             return res.status(404).json({
                 error: `Ultizator cu id ${req.params.configuratieId} nu exista! `,
               });
             }
@@ -232,4 +233,29 @@ router.put(
   }   
 );
 
+
+router.put(
+  "/modificaConfiguratie/:configuratieId",
+  async (req, res, next) => {
+    
+    try {
+        Configuratie.findByPk(req.params.configuratieId).then((r)=>{
+          
+            r.denumire = req.body.denumire
+            r.furnizorEnergie = req.body.furnizorEnergie
+            r.pretEnergie = req.body.pretEnergie
+            r.save().then((l)=>{
+             return res.status(200).json({ message: "Configuratie modificata!" });
+             });
+        
+        })
+        }
+    catch(e){
+      return res.status(200).json({ message: "Eroare" });
+
+    }
+
+    
+  }   
+);
 module.exports = router;

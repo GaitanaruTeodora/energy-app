@@ -5,9 +5,10 @@
 }
                 
 .container {
-    border: 1px solid #eeccee;
+    border: 8px solid whitesmoke;
     max-height: 500px;
     overflow-y: scroll;
+    border-radius: 3%;
     width: 100%;
 }
 .container2 {

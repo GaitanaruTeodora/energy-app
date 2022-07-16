@@ -1,4 +1,4 @@
-import { Card, Grid } from "@mui/material";
+import { Card, Grid, Icon } from "@mui/material";
 import SuiBox from "components/SuiBox";
 import Footer from "examples/Footer";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -30,13 +30,19 @@ function Recomandari() {
   /// DE FACUT DENUMIREA AUTOMATA CNAD APAS PE SELECT SI DAT IN GET DENUMIRE
 
   const get_recomandari = async () => {
+
+    try{
+
+ 
     const config = {
       headers: {
         "Content-type": "application/json",
       },
     };
 
-    await axios
+    if (consumatoriProprii[selecteaza1].predefinit == true)
+    {
+      await axios
       .post(
         `http://localhost:3000/api/python`,
         {
@@ -47,19 +53,92 @@ function Recomandari() {
       .then(({ data }) => {
         let js = JSON.parse(data["out"][0].replaceAll(`'`, `"`));
         var arr = [];
+        console.log(js)
         arr.push(js["rez"]["poz1"]);
         arr.push(js["rez"]["poz2"]);
         arr.push(js["rez"]["poz3"]);
         setAleg(arr);
       });
+    }
+    else{
+console.log("Este predefinit")
+console.log(consumatoriProprii[selecteaza1])
+var arr = [];
+var nr = 0;
+      predefiniti.forEach((p)=>{
+       
+        if (p.categorie.toUpperCase() ==consumatoriProprii[selecteaza1].categorie.toUpperCase() )
+        {
+          if(( p.consum <consumatoriProprii[selecteaza1].consum && nr <3 ) ){
+            var ca = {
+              "pret":p.pret,
+              "consum":p.consum,
+              "denumire":p.denumire,
+              "img":p.imagine
+            }
+            console.log(ca)
+            console.log("--------------------------------------")
+            arr.push(ca);
+      
+            
+        
+            
+            nr = nr +1
+          }
+
+
+        }
+      })
+      
+     
+
+      if (nr == 0){
+        predefiniti.forEach((p)=>{
+       
+          if (p.categorie.toUpperCase() ==consumatoriProprii[selecteaza1].categorie.toUpperCase() )
+          {
+            if((nr<3) ){
+              var ca = {
+                "pret":p.pret,
+                "consum":p.consum,
+                "denumire":p.denumire,
+                "img":p.imagine
+              }
+              console.log(ca)
+              console.log("--------------------------------------")
+              arr.push(ca);
+        
+              
+          
+              
+              nr = nr +1
+            }
+  
+  
+          }
+        })
+      
+      }
+      setAleg(arr);
+    }
+  }catch(e){
+    console.log(e)
+  }
+ 
   };
 
   useEffect(() => {
-    get_recomandari();
+    try{
+      get_recomandari();
+    }catch(e){
+
+    }
+ 
   }, [selecteaza1]);
 
   const { error, loading, userInfo } = userLogin;
   useEffect(() => {
+    try{
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -81,36 +160,41 @@ function Recomandari() {
             config
           )
           .then((rez) => {
-            setConsumatoriProprii(r.data.consumatori.filter((x) => x.predefinit == true));
+            //.filter((x) => x.predefinit == true)
+            setConsumatoriProprii(r.data.consumatori);
+            // setConsumatoriProprii(r.data.consumatori);
             setCategorie(r.data.consumatori[0].categorie);
             setPredefiniti(rez.data);
             setLoading(false);
           });
       });
+    }
+    catch(e){
+      
+    }
   }, [userInfo]);
   return (
     <DashboardLayout>
       <DashboardNavbar />
 
-      {isLoading ? (
-        // <Loader content="Loading..." vertical />
-        //
+      
 
-        <Oval
-          position="fixed"
-          // left:0;
-          // z-index: 9999;
-          // display: flex;
-          // justify-content: center;
-          // align-items: center;
-          // flex-wrap: nowrap;
-          // flex-direction: row;
-          color="#00BFFF"
-          height={300}
-          width={200}
-          title={"Loading..."}
-          size={100}
-        />
+      {isLoading ? (
+        <Grid item container direction="row">
+        <Icon fontSize="medium" color="dark">
+        arrow_forward
+        </Icon>
+                <SuiTypography
+                  verticalAlign="middle"
+                  variant="body1"
+                  fontWeight="bold"
+                  ml={1}
+                  textGradient
+                >
+                  {" "}
+                  Introduceti dispozitive în mod automat in configuratie pentru a putea primi recomadări !
+                </SuiTypography>{" "}
+              </Grid>
       ) : (
         <SuiBox py={3}>
           <SuiBox mb={3}>
@@ -125,7 +209,7 @@ function Recomandari() {
                   className="container"
                 >
                   <table className="main-edit-table" align="right">
-                    <thead>
+                    <thead style={{textAlign:"center"}}>
                       <th>Dispozitivele tale</th>
                     </thead>
                     <tbody>
@@ -172,7 +256,7 @@ function Recomandari() {
                       lg={4}
                     >
                       <Card ml={1}>
-                        <SuiBox p={3} ml={3}>
+                        <SuiBox p={2}  style={{textAlign:"center"}}>
                           <SuiBox
                             component="img"
                             src={item.img}
@@ -180,10 +264,10 @@ function Recomandari() {
                             borderRadius="lg"
                             boxShadow="lg"
                             width="300px"
-                            height="270px"
+                        height="250px"
                           />
                           <SuiBox display="flex">
-                            <SuiBox mt={1}>
+                            <SuiBox >
                               <SuiTypography
                                 display="block"
                                 variant="caption"
@@ -191,7 +275,10 @@ function Recomandari() {
                                 textColor="secondary"
                               >
                                 <SuiTypography variant="h5"> {item.denumire} </SuiTypography>
+
+                                
                               </SuiTypography>
+                              
                               <SuiTypography
                                 display="block"
                                 variant="button"
@@ -199,7 +286,7 @@ function Recomandari() {
                                 textColor="secondary"
                                 mt={2}
                               >
-                                <SuiTypography> Pret: {item.pret} RON </SuiTypography>
+                                <SuiTypography variant="h5"> Pret: {item.pret} RON </SuiTypography>
                               </SuiTypography>
 
                               <SuiTypography
@@ -208,7 +295,7 @@ function Recomandari() {
                                 fontWeight="medium"
                                 textColor="dark"
                               >
-                                <SuiTypography> Consum: {item.consum} kWh </SuiTypography>
+                                <SuiTypography variant="h5"> Consum: {item.consum} kWh </SuiTypography>
                               </SuiTypography>
                             </SuiBox>
                           </SuiBox>

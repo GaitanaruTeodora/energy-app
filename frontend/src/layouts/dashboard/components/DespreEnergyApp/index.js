@@ -25,9 +25,9 @@ function DespreEnergyApp() {
                   Doar daca esti informat corect, alegi soluțiile cele mai bune astfel încat să
                   reduci consumul, să eviți risipa de energie și să protejezi mediul încojurator.
                   <Separator />
-                  Misiunea Energy App este sa contribuie la procesul de informare al utilizatorilor
-                  de energie electrica oferind noi informatii, sfaturi de consum, recomandari
-                  eficiente de electrocasnice si valori cat mai reale ale consumului si
+                  Misiunea Energy App este să contribuie la procesul de informare al utilizatorilor
+                  de energie electrică oferind noi informații, sfaturi de consum, recomandări
+                  eficiente de electrocasnice și valori cat mai reale ale consumului si
                   cheltuielilor proprii.
                 </SuiTypography>
               </SuiBox>

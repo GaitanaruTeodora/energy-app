@@ -59,20 +59,27 @@ function Cameras({idConfiguratie,camera,setCamera,load,setLoad}) {
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
   const calculTotal = async ()=>{
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-     axios.get(
-      `http://localhost:3000/api/configuratii/perconfiguratie/${userInfo.id}/${idConfiguratie}`,
-
-      config
-    ).then((r)=>{
-      setTotal(r.data.total)
-      console.log(r)
-    })
+    try
+    {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+       axios.get(
+        `http://localhost:3000/api/configuratii/perconfiguratie/${userInfo.id}/${idConfiguratie}`,
+  
+        config
+      ).then((r)=>{
+        setTotal(r.data.total)
+        console.log(r)
+      })
+    }
+  catch(e){
+    
   }
+  }
+ 
 
   
   useEffect(()=>{

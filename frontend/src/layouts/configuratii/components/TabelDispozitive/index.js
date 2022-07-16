@@ -222,20 +222,7 @@ function TabelDispozitive({
 
             </Grid>
           ) : (
-//             <Grid container spacing={2}>
-//   <Grid item xs={8}>
-//     <Item>xs=8</Item>
-//   </Grid>
-//   <Grid item xs={4}>
-//     <Item>xs=4</Item>
-//   </Grid>
-//   <Grid item xs={4}>
-//     <Item>xs=4</Item>
-//   </Grid>
-//   <Grid item xs={8}>
-//     <Item>xs=8</Item>
-//   </Grid>
-// </Grid
+
 
             <SuiBox ml={{ xs: 0, sm: "auto" }} mb={{ xs: 1, sm: 0 }} lineHeight={1}>
               
@@ -376,12 +363,12 @@ function TabelDispozitive({
               <SuiButton
                 variant={"outlined"}
                 onClick={() => setModifica(!modifica)}
-                buttonColor={"primary"}
+                buttonColor={"dark"}
               >
                 Modifica
               </SuiButton>
             ) : (
-              <SuiButton variant={"outlined"} onClick={() => salveaza()} buttonColor={"primary"}>
+              <SuiButton variant={"outlined"} onClick={() => salveaza()} buttonColor={"dark"}>
                 Salveaza
               </SuiButton>
             )}

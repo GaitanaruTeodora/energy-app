@@ -143,7 +143,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
     >
       <Toolbar sx={(theme) => navbarContainer(theme)}>
         <SuiBox color="inherit" mb={{ xs: 1, md: 0 }} sx={(theme) => navbarRow(theme, { isMini })}>
-          <Breadcrumbs icon="home" title={isNumeric(route[route.length - 1])? "Configuratie "+route[route.length - 1] : route[route.length - 1] } route={route} light={light} />
+          <Breadcrumbs icon="home" title={isNumeric(route[route.length - 1])? "Configuratii " : route[route.length - 1] } route={route} light={light} />
         </SuiBox>
         {isMini ? null : (
           <SuiBox sx={(theme) => navbarRow(theme, { isMini })}>
